@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://dsw43uwkxmfgi"]
+
+[ext_resource type="Theme" uid="uid://clinbc5p1ib2i" path="res://src/button_theme.tres" id="1_ah3is"]
+
+[node name="Main_Menu_Button" type="Button" unique_id=1317536708]
+texture_filter = 1
+offset_left = 4.0
+offset_top = -1.0
+offset_right = 62.0
+offset_bottom = 38.0
+mouse_default_cursor_shape = 2
+theme = ExtResource("1_ah3is")
+theme_override_font_sizes/font_size = 24
+text = "Start"

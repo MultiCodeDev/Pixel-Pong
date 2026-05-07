@@ -1,0 +1,31 @@
+[gd_scene format=3 uid="uid://c2d8s34175hn8"]
+
+[ext_resource type="PackedScene" uid="uid://mmkfp5hchijo" path="res://src/main_menu.tscn" id="1_ig7tw"]
+[ext_resource type="Texture2D" uid="uid://7iuf2w222ra3" path="res://assets/pixel-pong-title-background.png" id="2_h2yge"]
+[ext_resource type="Texture2D" uid="uid://ns8rue7q803x" path="res://assets/pixel-pong-title.png" id="3_1bvp3"]
+
+[node name="Main" type="Node2D" unique_id=1271280970]
+
+[node name="Main Menu" parent="." unique_id=1960640494 instance=ExtResource("1_ig7tw")]
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=420396789]
+offset_right = 640.0
+offset_bottom = 361.0
+color = Color(0.6509804, 0.81960785, 1, 1)
+metadata/_edit_lock_ = true
+
+[node name="Title Background" type="NinePatchRect" parent="." unique_id=756074018]
+offset_left = 104.0
+offset_top = 8.0
+offset_right = 560.0
+offset_bottom = 80.0
+texture = ExtResource("2_h2yge")
+patch_margin_left = 2
+patch_margin_top = 2
+patch_margin_right = 2
+patch_margin_bottom = 2
+
+[node name="Title" type="Sprite2D" parent="." unique_id=1315904955]
+texture_filter = 1
+position = Vector2(336, 40)
+texture = ExtResource("3_1bvp3")
