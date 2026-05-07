@@ -1,0 +1,38 @@
+[gd_scene format=3 uid="uid://mmkfp5hchijo"]
+
+[ext_resource type="Texture2D" uid="uid://b3bw1ogpsueix" path="res://assets/menu-pong.png" id="1_06t4h"]
+[ext_resource type="Script" uid="uid://cq24ufev40a4s" path="res://src/main_menu.gd" id="1_fu7sn"]
+[ext_resource type="PackedScene" uid="uid://dsw43uwkxmfgi" path="res://src/main_menu_button.tscn" id="2_7vrkn"]
+
+[node name="Main Menu" type="Node2D" unique_id=1960640494]
+script = ExtResource("1_fu7sn")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=618781902]
+
+[node name="Overlay" type="Sprite2D" parent="CanvasLayer" unique_id=1480733865]
+texture_filter = 1
+position = Vector2(320, 215)
+scale = Vector2(10.999999, 8.468749)
+texture = ExtResource("1_06t4h")
+
+[node name="Start_Button" parent="CanvasLayer" unique_id=1317536708 instance=ExtResource("2_7vrkn")]
+offset_left = 272.0
+offset_top = 136.0
+offset_right = 376.0
+offset_bottom = 175.0
+
+[node name="Settings_Button" parent="CanvasLayer" unique_id=1857253419 instance=ExtResource("2_7vrkn")]
+offset_left = 272.0
+offset_top = 192.0
+offset_right = 376.0
+offset_bottom = 231.0
+text = "Settings"
+
+[node name="Exit_Button" parent="CanvasLayer" unique_id=896881548 instance=ExtResource("2_7vrkn")]
+offset_left = 272.0
+offset_top = 248.0
+offset_right = 376.0
+offset_bottom = 287.0
+text = "Exit"
+
+[connection signal="pressed" from="CanvasLayer/Start_Button" to="." method="_on_start_button_pressed"]

@@ -10,9 +10,15 @@ config_version=5
 
 [application]
 
-config/name="Pixel-Pong"
+config/name="pixel-pong"
+run/main_scene="uid://c2d8s34175hn8"
 config/features=PackedStringArray("4.6", "GL Compatibility")
-config/icon="res://icon.svg"
+run/max_fps=144
+
+[display]
+
+window/size/viewport_width=640
+window/size/viewport_height=360
 
 [physics]
 
@@ -21,5 +27,4 @@ config/icon="res://icon.svg"
 [rendering]
 
 rendering_device/driver.windows="d3d12"
-renderer/rendering_method="gl_compatibility"
-renderer/rendering_method.mobile="gl_compatibility"
+renderer/rendering_method="mobile"

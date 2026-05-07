@@ -1,0 +1,62 @@
+[gd_scene format=3 uid="uid://yqpaetmc8mms"]
+
+[ext_resource type="Script" uid="uid://tna7tka1jpmk" path="res://src/gameplay_scene.gd" id="1_2ca1c"]
+[ext_resource type="Texture2D" uid="uid://b3bw1ogpsueix" path="res://assets/menu-pong.png" id="3_eg38f"]
+[ext_resource type="Theme" uid="uid://clinbc5p1ib2i" path="res://src/button_theme.tres" id="3_ugw3c"]
+[ext_resource type="PackedScene" uid="uid://dsw43uwkxmfgi" path="res://src/main_menu_button.tscn" id="4_ugw3c"]
+
+[node name="Gameplay_Scene" type="Node2D" unique_id=298170483]
+script = ExtResource("1_2ca1c")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1215113140]
+process_mode = 3
+offset_right = 640.0
+offset_bottom = 360.0
+color = Color(0.45904195, 0.6654228, 0.40532026, 1)
+metadata/_edit_lock_ = true
+
+[node name="Pause_Button" type="Button" parent="." unique_id=2086165331]
+offset_left = 288.0
+offset_top = 8.0
+offset_right = 352.0
+offset_bottom = 40.0
+mouse_default_cursor_shape = 2
+theme = ExtResource("3_ugw3c")
+text = "Pause"
+
+[node name="Pause_Menu" type="Node2D" parent="." unique_id=331607009]
+
+[node name="Screen" type="CanvasLayer" parent="Pause_Menu" unique_id=1799371096]
+
+[node name="Overlay" type="Sprite2D" parent="Pause_Menu/Screen" unique_id=161854570]
+texture_filter = 1
+position = Vector2(320, 187.49998)
+scale = Vector2(10.999999, 8.468749)
+texture = ExtResource("3_eg38f")
+
+[node name="Continue_Button" parent="Pause_Menu/Screen" unique_id=1317536708 instance=ExtResource("4_ugw3c")]
+process_mode = 2
+offset_left = 263.0
+offset_top = 108.499985
+offset_right = 380.0
+offset_bottom = 147.49998
+text = "Continue"
+
+[node name="Settings_Button" parent="Pause_Menu/Screen" unique_id=378007447 instance=ExtResource("4_ugw3c")]
+process_mode = 2
+offset_left = 263.0
+offset_top = 164.49998
+offset_right = 380.0
+offset_bottom = 203.49998
+text = "Settings"
+
+[node name="Exit_Button" parent="Pause_Menu/Screen" unique_id=1412671756 instance=ExtResource("4_ugw3c")]
+process_mode = 2
+offset_left = 263.0
+offset_top = 220.5
+offset_right = 380.0
+offset_bottom = 259.5
+text = "Exit"
+
+[connection signal="pressed" from="Pause_Button" to="." method="_on_pause_button_pressed"]
+[connection signal="pressed" from="Pause_Menu/Screen/Continue_Button" to="." method="_on_continue_button_pressed"]

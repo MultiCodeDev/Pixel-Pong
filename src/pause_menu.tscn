@@ -1,0 +1,35 @@
+[gd_scene format=3 uid="uid://cb6kqh062alkc"]
+
+[ext_resource type="Texture2D" uid="uid://b3bw1ogpsueix" path="res://assets/menu-pong.png" id="1_nwcfo"]
+[ext_resource type="PackedScene" uid="uid://dsw43uwkxmfgi" path="res://src/main_menu_button.tscn" id="2_05uyy"]
+
+[node name="Pause_Menu" type="Node2D" unique_id=331607009]
+
+[node name="Screen" type="CanvasLayer" parent="." unique_id=1799371096]
+
+[node name="Sprite2D" type="Sprite2D" parent="Screen" unique_id=161854570]
+texture_filter = 1
+position = Vector2(313, 169.49998)
+scale = Vector2(10.999999, 8.468749)
+texture = ExtResource("1_nwcfo")
+
+[node name="Continue_Button" parent="Screen" unique_id=1317536708 instance=ExtResource("2_05uyy")]
+offset_left = 265.0
+offset_top = 90.499985
+offset_right = 369.0
+offset_bottom = 129.49998
+text = "Continue"
+
+[node name="Settings_Button" parent="Screen" unique_id=378007447 instance=ExtResource("2_05uyy")]
+offset_left = 265.0
+offset_top = 146.49998
+offset_right = 369.0
+offset_bottom = 185.49998
+text = "Settings"
+
+[node name="Exit_Button" parent="Screen" unique_id=1412671756 instance=ExtResource("2_05uyy")]
+offset_left = 265.0
+offset_top = 202.49998
+offset_right = 369.0
+offset_bottom = 241.49998
+text = "Exit"
