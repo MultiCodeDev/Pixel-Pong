@@ -4,9 +4,30 @@
 [ext_resource type="Texture2D" uid="uid://b3bw1ogpsueix" path="res://assets/menu-pong.png" id="3_eg38f"]
 [ext_resource type="Theme" uid="uid://clinbc5p1ib2i" path="res://src/button_theme.tres" id="3_ugw3c"]
 [ext_resource type="PackedScene" uid="uid://dsw43uwkxmfgi" path="res://src/main_menu_button.tscn" id="4_ugw3c"]
+[ext_resource type="PackedScene" uid="uid://c5dobexm8vx3u" path="res://src/player.tscn" id="5_e44ff"]
+[ext_resource type="Texture2D" uid="uid://cpvly33amb3rr" path="res://assets/pong_ball.png" id="6_vowlv"]
+[ext_resource type="Script" uid="uid://nujfl3gfc6a6" path="res://src/ball.gd" id="6_wsirb"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_wsirb"]
+friction = 0.0
+bounce = 1.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_wsirb"]
+radius = 12.0
+height = 24.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wsirb"]
+size = Vector2(650, 10)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hmywi"]
+size = Vector2(9, 360)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_uicrl"]
+size = Vector2(5, 360)
 
 [node name="Gameplay_Scene" type="Node2D" unique_id=298170483]
 script = ExtResource("1_2ca1c")
+metadata/_edit_lock_ = true
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=1215113140]
 process_mode = 3
@@ -25,6 +46,7 @@ theme = ExtResource("3_ugw3c")
 text = "Pause"
 
 [node name="Pause_Menu" type="Node2D" parent="." unique_id=331607009]
+metadata/_edit_lock_ = true
 
 [node name="Screen" type="CanvasLayer" parent="Pause_Menu" unique_id=1799371096]
 
@@ -57,6 +79,60 @@ offset_top = 220.5
 offset_right = 380.0
 offset_bottom = 259.5
 text = "Exit"
+
+[node name="Player1" parent="." unique_id=1190717347 instance=ExtResource("5_e44ff")]
+
+[node name="Player2" parent="." unique_id=13847598 instance=ExtResource("5_e44ff")]
+
+[node name="Ball" type="RigidBody2D" parent="." unique_id=1678089683]
+collision_layer = 3
+collision_mask = 3
+physics_material_override = SubResource("PhysicsMaterial_wsirb")
+gravity_scale = 0.0
+linear_velocity = Vector2(-200, 10)
+linear_damp_mode = 1
+angular_velocity = 0.34906584
+angular_damp_mode = 1
+script = ExtResource("6_wsirb")
+
+[node name="Sprite2D" type="Sprite2D" parent="Ball" unique_id=1012363357]
+texture_filter = 1
+texture = ExtResource("6_vowlv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ball" unique_id=745142933]
+shape = SubResource("CapsuleShape2D_wsirb")
+
+[node name="Top_Wall" type="StaticBody2D" parent="." unique_id=1165217877]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Top_Wall" unique_id=734293845]
+position = Vector2(315, -5)
+shape = SubResource("RectangleShape2D_wsirb")
+
+[node name="Bottom_Wall" type="StaticBody2D" parent="." unique_id=1057570952]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bottom_Wall" unique_id=1897556074]
+position = Vector2(315, 365)
+shape = SubResource("RectangleShape2D_wsirb")
+
+[node name="Left_Wall" type="StaticBody2D" parent="." unique_id=816261382]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Left_Wall" unique_id=1723358539]
+position = Vector2(-1.5, 180)
+shape = SubResource("RectangleShape2D_hmywi")
+
+[node name="Right_Wall" type="StaticBody2D" parent="." unique_id=287297861]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Right_Wall" unique_id=82774816]
+position = Vector2(639.5, 180)
+shape = SubResource("RectangleShape2D_uicrl")
 
 [connection signal="pressed" from="Pause_Button" to="." method="_on_pause_button_pressed"]
 [connection signal="pressed" from="Pause_Menu/Screen/Continue_Button" to="." method="_on_continue_button_pressed"]
