@@ -18,11 +18,7 @@ func _physics_process(delta: float) -> void:
 		direction = 0
 		
 	position.y += direction * SPEED * delta
-	
-	var collision = move_and_collide(position, true)
-	position.x = initial_x
-	
-	if collision:
-		Global.reflect_ball.emit()
-		
-	#print(position)
+	position.y = clampf(position.y, 0, Global.SCREEN_HEIGHT - 38)
+	move_and_collide(position, true)
+	#var collision = move_and_collide(position, true)
+	#position.x = initial_x
