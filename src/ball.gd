@@ -7,6 +7,8 @@ const positive_minimum_velocity: float = 200
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	print("new ball")
+	position = start_position
 	linear_velocity = getRandomVelocity()
 	#linear_velocity = Vector2(Global.rng.randf_range(200, 300), Global.rng.randf_range(200, 300))
 	

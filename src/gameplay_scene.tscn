@@ -123,6 +123,53 @@ theme_override_font_sizes/font_size = 32
 text = "0"
 horizontal_alignment = 1
 
+[node name="Game_Over" type="Node2D" parent="." unique_id=449199193]
+
+[node name="Screen" type="CanvasLayer" parent="Game_Over" unique_id=1427082279]
+
+[node name="Sprite2D" type="Sprite2D" parent="Game_Over/Screen" unique_id=1469787558]
+texture_filter = 1
+position = Vector2(315, 180.00002)
+scale = Vector2(15.140626, 11.656562)
+texture = ExtResource("3_eg38f")
+
+[node name="Label" type="Label" parent="Game_Over/Screen" unique_id=1660033756]
+offset_left = 158.0
+offset_top = 52.0
+offset_right = 466.0
+offset_bottom = 94.0
+theme_override_colors/font_color = Color(0.3, 0.3, 0.3, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 7
+theme_override_font_sizes/font_size = 30
+text = "Player 1 has Won!!!"
+horizontal_alignment = 1
+
+[node name="Replay_Button" parent="Game_Over/Screen" unique_id=99307309 instance=ExtResource("4_ugw3c")]
+process_mode = 2
+offset_left = 231.0
+offset_top = 119.0
+offset_right = 405.0
+offset_bottom = 158.0
+text = "Restart"
+
+[node name="Settings_Button" parent="Game_Over/Screen" unique_id=1968079273 instance=ExtResource("4_ugw3c")]
+process_mode = 2
+offset_left = 231.0
+offset_top = 175.0
+offset_right = 405.0
+offset_bottom = 214.0
+text = "Settings"
+
+[node name="Exit_Button" parent="Game_Over/Screen" unique_id=1802087475 instance=ExtResource("4_ugw3c")]
+process_mode = 2
+offset_left = 231.0
+offset_top = 231.0
+offset_right = 405.0
+offset_bottom = 270.0
+text = "Exit"
+
 [connection signal="body_shape_entered" from="Ball" to="." method="_on_ball_body_shape_entered"]
 [connection signal="pressed" from="Pause_Button" to="." method="_on_pause_button_pressed"]
 [connection signal="pressed" from="Pause_Menu/Screen/Continue_Button" to="." method="_on_continue_button_pressed"]
+[connection signal="pressed" from="Game_Over/Screen/Replay_Button" to="." method="_on_replay_button_pressed"]
