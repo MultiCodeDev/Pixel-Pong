@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://tna7tka1jpmk" path="res://src/gameplay_scene.gd" id="1_2ca1c"]
 [ext_resource type="Texture2D" uid="uid://b3bw1ogpsueix" path="res://assets/menu-pong.png" id="3_eg38f"]
+[ext_resource type="Texture2D" uid="uid://l4rrlfbohm2l" path="res://assets/pause-button.png" id="3_hmywi"]
 [ext_resource type="Theme" uid="uid://clinbc5p1ib2i" path="res://src/button_theme.tres" id="3_ugw3c"]
 [ext_resource type="PackedScene" uid="uid://dsw43uwkxmfgi" path="res://src/main_menu_button.tscn" id="4_ugw3c"]
 [ext_resource type="PackedScene" uid="uid://c5dobexm8vx3u" path="res://src/player.tscn" id="5_e44ff"]
@@ -22,14 +23,20 @@ offset_bottom = 360.0
 color = Color(0.45904195, 0.6654228, 0.40532026, 1)
 metadata/_edit_lock_ = true
 
+[node name="Ball" parent="." unique_id=448465990 instance=ExtResource("6_wsirb")]
+
 [node name="Pause_Button" type="Button" parent="." unique_id=2086165331]
-offset_left = 288.0
-offset_top = 8.0
-offset_right = 352.0
-offset_bottom = 40.0
+texture_filter = 1
+offset_left = 331.0
+offset_right = 365.0
+offset_bottom = 32.0
+rotation = 1.5707964
 mouse_default_cursor_shape = 2
 theme = ExtResource("3_ugw3c")
-text = "Pause"
+action_mode = 0
+icon = ExtResource("3_hmywi")
+flat = true
+icon_alignment = 1
 
 [node name="Pause_Menu" type="Node2D" parent="." unique_id=331607009]
 metadata/_edit_lock_ = true
@@ -38,39 +45,37 @@ metadata/_edit_lock_ = true
 
 [node name="Overlay" type="Sprite2D" parent="Pause_Menu/Screen" unique_id=161854570]
 texture_filter = 1
-position = Vector2(320, 187.49998)
+position = Vector2(313, 187.49998)
 scale = Vector2(10.999999, 8.468749)
 texture = ExtResource("3_eg38f")
 
 [node name="Continue_Button" parent="Pause_Menu/Screen" unique_id=1317536708 instance=ExtResource("4_ugw3c")]
 process_mode = 2
-offset_left = 263.0
+offset_left = 255.99998
 offset_top = 108.499985
-offset_right = 380.0
+offset_right = 373.0
 offset_bottom = 147.49998
 text = "Continue"
 
 [node name="Settings_Button" parent="Pause_Menu/Screen" unique_id=378007447 instance=ExtResource("4_ugw3c")]
 process_mode = 2
-offset_left = 263.0
+offset_left = 255.99998
 offset_top = 164.49998
-offset_right = 380.0
+offset_right = 373.0
 offset_bottom = 203.49998
 text = "Settings"
 
 [node name="Exit_Button" parent="Pause_Menu/Screen" unique_id=1412671756 instance=ExtResource("4_ugw3c")]
 process_mode = 2
-offset_left = 263.0
+offset_left = 255.99998
 offset_top = 220.5
-offset_right = 380.0
+offset_right = 373.0
 offset_bottom = 259.5
 text = "Exit"
 
 [node name="Player1" parent="." unique_id=1190717347 instance=ExtResource("5_e44ff")]
 
 [node name="Player2" parent="." unique_id=13847598 instance=ExtResource("5_e44ff")]
-
-[node name="Ball" parent="." unique_id=448465990 instance=ExtResource("6_wsirb")]
 
 [node name="Top_Wall" type="StaticBody2D" parent="." unique_id=1165217877]
 collision_layer = 2
@@ -85,7 +90,7 @@ collision_layer = 2
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Bottom_Wall" unique_id=1897556074]
-position = Vector2(315, 365)
+position = Vector2(308, 365)
 shape = SubResource("RectangleShape2D_wsirb")
 
 [node name="Left_Wall" parent="." unique_id=191142190 instance=ExtResource("8_hmywi")]
@@ -96,20 +101,28 @@ position = Vector2(638, 0)
 
 [node name="Player1_Score" type="Label" parent="." unique_id=1416631776]
 offset_left = 158.0
-offset_top = 1.0
+offset_top = -8.0
 offset_right = 198.0
-offset_bottom = 24.0
+offset_bottom = 37.0
+theme_override_colors/font_color = Color(0.8563559, 0.44200873, 0.26844394, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 8
+theme_override_font_sizes/font_size = 32
 text = "0"
 horizontal_alignment = 1
 
 [node name="Player2_Score" type="Label" parent="." unique_id=416222696]
 offset_left = 426.0
-offset_top = 1.0
+offset_top = -8.0
 offset_right = 466.0
-offset_bottom = 24.0
+offset_bottom = 37.0
+theme_override_colors/font_color = Color(0.33879998, 0.5040933, 0.77, 1)
+theme_override_colors/font_outline_color = Color(0.99881166, 0.9826279, 0.98203975, 1)
+theme_override_constants/outline_size = 8
+theme_override_font_sizes/font_size = 32
 text = "0"
 horizontal_alignment = 1
 
+[connection signal="body_shape_entered" from="Ball" to="." method="_on_ball_body_shape_entered"]
 [connection signal="pressed" from="Pause_Button" to="." method="_on_pause_button_pressed"]
 [connection signal="pressed" from="Pause_Menu/Screen/Continue_Button" to="." method="_on_continue_button_pressed"]
-[connection signal="body_shape_entered" from="Ball" to="." method="_on_ball_body_shape_entered"]

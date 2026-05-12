@@ -30,6 +30,8 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
 	#pass
+	if Input.is_action_pressed("pause"):
+		_on_pause_button_pressed()
 	print(ball.linear_velocity)
 
 
@@ -63,9 +65,10 @@ func reset(body: Node) -> void:
 	ball.call_deferred("queue_free")
 	ball = ball_resource.instantiate()
 	ball.connect("body_shape_entered", _on_ball_body_shape_entered)
-	ball.position = Vector2(Global.SCREEN_WIDTH / 2.0, Global.SCREEN_HEIGHT / 2.0)
+	ball.position = ball.start_position
 	ball.linear_velocity = (Vector2(Global.rng.randf_range(200, 300), Global.rng.randf_range(200, 300)))
 	call_deferred("add_child", ball)
+	call_deferred("move_child", ball, 1)
 	
 	
 	
